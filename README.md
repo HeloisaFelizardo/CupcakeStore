@@ -18,6 +18,16 @@ Atualmente o projeto está na fase de:
 
 Antes de iniciar a implementação, foi estruturada toda a base de entendimento do sistema.
 
+## 🗺 Roadmap
+
+- [x] Levantamento de requisitos
+- [x] Histórias de usuário
+- [x] Critérios de aceitação (BDD)
+- [ ] Diagrama de classes
+- [ ] Implementação da camada Service
+- [ ] Testes unitários
+- [ ] Deploy inicial
+
 ---
 
 ## ✅ Etapas Concluídas
