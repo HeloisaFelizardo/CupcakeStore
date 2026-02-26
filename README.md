@@ -23,7 +23,14 @@ Antes de iniciar a implementação, foi estruturada toda a base de entendimento 
 - [x] Levantamento de requisitos
 - [x] Histórias de usuário
 - [x] Critérios de aceitação (BDD)
-- [ ] Diagrama de classes
+- [x] Diagrama de classes
+- [ ] Diagrama de Casos de uso
+- [ ] Diagrama de Fluxo do Cliente
+- [ ] Sprint Backlog
+- [ ] Diagrama de Atividades
+- [ ] Início da implementação com Java + Spring Boot
+- [ ] Wireframes (HTML + CSS)
+
 - [ ] Implementação da camada Service
 - [ ] Testes unitários
 - [ ] Deploy inicial
@@ -32,12 +39,12 @@ Antes de iniciar a implementação, foi estruturada toda a base de entendimento 
 
 ## ✅ Etapas Concluídas
 
-- ✔ Histórias de Usuário  
-- ✔ Testes de Aceitação (estruturados com base em comportamento – BDD)  
-- ✔ Fluxo de Trabalho  
-- ✔ Detalhamento de Requisitos  
-- ✔ Casos de Uso Expandidos Narrados  
-- ✔ Wireframes da aplicação  
+- ✔ Histórias de Usuário
+- ✔ Testes de Aceitação (estruturados com base em comportamento – BDD)
+- ✔ Fluxo de Trabalho
+- ✔ Detalhamento de Requisitos
+- ✔ Casos de Uso Expandidos Narrados
+- ✔ Wireframes da aplicação
 
 Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.
 
@@ -45,12 +52,12 @@ Essa etapa garantiu clareza das regras de negócio e do comportamento esperado d
 
 ## 🔜 Próximas Etapas
 
-- 🔹 Diagrama de Classes  
-- 🔹 Diagrama de Casos de Uso (visual)  
-- 🔹 Mapa Conceitual do domínio  
-- 🔹 Implementação com Spring Boot  
-- 🔹 Estruturação da camada de persistência  
-- 🔹 Testes automatizados  
+- 🔹 Diagrama de Classes
+- 🔹 Diagrama de Casos de Uso (visual)
+- 🔹 Mapa Conceitual do domínio
+- 🔹 Implementação com Spring Boot
+- 🔹 Estruturação da camada de persistência
+- 🔹 Testes automatizados
 
 ---
 
@@ -78,10 +85,10 @@ Essa abordagem aproxima regras de negócio da implementação e facilita a futur
 
 Mais do que desenvolver funcionalidades, o foco deste projeto é praticar:
 
-- Estruturação adequada de requisitos  
-- Organização do domínio  
-- Modelagem antes da implementação  
-- Mentalidade orientada a arquitetura  
+- Estruturação adequada de requisitos
+- Organização do domínio
+- Modelagem antes da implementação
+- Mentalidade orientada a arquitetura
 
 Planejamento também é engenharia.
 
@@ -118,9 +125,7 @@ Controller → Service → Repository → Banco de Dados
 
 Essa organização facilita:
 
-- Separação de responsabilidades  
-- Testabilidade  
-- Manutenção futura  
-- Evolução da aplicação  
-
-
+- Separação de responsabilidades
+- Testabilidade
+- Manutenção futura
+- Evolução da aplicação
