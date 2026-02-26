@@ -30,9 +30,6 @@ Antes de iniciar a implementação, foi estruturada toda a base de entendimento 
 - [ ] Diagrama de Atividades
 - [ ] Início da implementação com Java + Spring Boot
 - [ ] Wireframes (HTML + CSS)
-
-- [ ] Implementação da camada Service
-- [ ] Testes unitários
 - [ ] Deploy inicial
 
 ---
