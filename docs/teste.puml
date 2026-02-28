@@ -1,0 +1,4 @@
+@startuml
+Alice -> Bob : Olá
+Bob --> Alice : Oi!
+@enduml

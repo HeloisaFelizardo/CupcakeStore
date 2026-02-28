@@ -18,6 +18,18 @@ Atualmente o projeto está na fase de:
 
 Antes de iniciar a implementação, foi estruturada toda a base de entendimento do sistema.
 
+---
+
+## Modelagem
+
+O projeto segue princípios básicos de Domain-Driven Design (DDD),
+com foco em agregados e comportamento no domínio.
+
+Diagrama de classes disponível em:
+docs/uml/class-diagram.puml
+
+---
+
 ## 🗺 Roadmap
 
 - [x] Levantamento de requisitos
@@ -41,6 +53,7 @@ Antes de iniciar a implementação, foi estruturada toda a base de entendimento 
 - ✔ Fluxo de Trabalho
 - ✔ Detalhamento de Requisitos
 - ✔ Casos de Uso Expandidos Narrados
+- ✔ Diagrama de Classes
 - ✔ Wireframes da aplicação
 
 Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.

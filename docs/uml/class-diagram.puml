@@ -1,0 +1,57 @@
+@startuml
+
+class Usuario {
+    - Long id
+    - String nome
+    - String email
+    - String senha
+    - Role role
+}
+
+class Cupcake {
+    - Long id
+    - String nome
+    - String descricao
+    - BigDecimal preco
+    - Integer estoque
+    - String imagemUrl
+    + boolean possuiEstoque()
+}
+
+class Pedido {
+    - Long id
+    - LocalDateTime dataCriacao
+    - StatusPedido status
+    - List<ItemPedido> itens
+
+    + adicionarItem(Cupcake cupcake, int quantidade)
+    + calcularTotal()
+    + finalizar()
+    + cancelar()
+    + getValorTotal() = soma dos subtotais dos itens
+}
+
+class ItemPedido {
+    - Long id
+    - Integer quantidade
+    - BigDecimal precoUnitario
+    + getSubtotal() = quantidade * precoUnitario
+}
+
+enum StatusPedido {
+    ABERTO
+    FINALIZADO
+    CANCELADO
+}
+
+enum Role {
+    CLIENTE
+    ADMIN
+}
+
+Usuario "1" --> "0..*" Pedido : realiza
+Pedido "1" *-- "1..*" ItemPedido : possui
+ItemPedido "0..*" --> "1" Cupcake : referencia
+Pedido --> StatusPedido
+
+@enduml
