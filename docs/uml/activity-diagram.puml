@@ -1,0 +1,62 @@
+@startuml Cliente
+
+start
+
+:Visualizar Cupcakes;
+:Selecionar Cupcake;
+:Solicitar Adição ao Carrinho;
+
+if (Está logado?) then (Sim)
+    :Adicionar ao Carrinho;
+else (Não)
+    :Realizar Login;
+    :Adicionar ao Carrinho;
+endif
+
+:Solicitar Finalização do Pedido;
+:Confirmar Pedido;
+:Salvar Pedido no Banco;
+
+stop
+
+@enduml
+
+@startuml Admin
+
+start
+
+:Realizar Login;
+
+if (Login válido?) then (Sim)
+
+    :Escolher Ação;
+
+    if (Qual ação?) then (Cadastrar)
+        :Preencher Dados;
+        :Salvar no Banco;
+
+    elseif (Editar)
+        :Selecionar Cupcake;
+        :Atualizar Dados;
+        :Salvar no Banco;
+
+    elseif (Remover)
+        :Selecionar Cupcake;
+        :Remover do Banco;
+
+    elseif (Atualizar Estoque)
+        :Selecionar Cupcake;
+        :Alterar Quantidade;
+        :Salvar no Banco;
+
+    elseif (Visualizar Pedidos)
+        :Buscar Pedidos no Banco;
+    endif
+
+else (Não)
+    :Exibir Erro de Login;
+endif
+
+stop
+
+@enduml

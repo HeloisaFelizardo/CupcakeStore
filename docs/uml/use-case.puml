@@ -1,0 +1,34 @@
+@startuml
+
+left to right direction
+
+actor Cliente
+actor Admin
+
+rectangle "Sistema de Venda de Cupcakes" {
+
+    (Realizar Login)
+
+    Cliente --> (Visualizar Cupcakes)
+    Cliente --> (Ver detalhes do Cupcake)
+    Cliente --> (Adicionar Cupcake ao Carrinho)
+    Cliente --> (Finalizar Pedido)
+
+    (Adicionar Cupcake ao Carrinho) ..> (Realizar Login) : <<include>>
+    (Finalizar Pedido) ..> (Realizar Login) : <<include>>
+
+    Admin --> (Cadastrar Cupcake)
+    Admin --> (Editar Cupcake)
+    Admin --> (Remover Cupcake)
+    Admin --> (Atualizar Estoque)
+    Admin --> (Visualizar Pedidos Realizados)
+
+    (Cadastrar Cupcake) ..> (Realizar Login) : <<include>>
+    (Editar Cupcake) ..> (Realizar Login) : <<include>>
+    (Remover Cupcake) ..> (Realizar Login) : <<include>>
+    (Atualizar Estoque) ..> (Realizar Login) : <<include>>
+    (Visualizar Pedidos Realizados) ..> (Realizar Login) : <<include>>
+
+}
+
+@enduml

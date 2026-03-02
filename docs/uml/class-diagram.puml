@@ -21,14 +21,13 @@ class Cupcake {
 class Pedido {
     - Long id
     - LocalDateTime dataCriacao
-    - StatusPedido status
+    - StatusPedido status   
+    - Usuario usuario
     - List<ItemPedido> itens
-
     + adicionarItem(Cupcake cupcake, int quantidade)
-    + calcularTotal()
     + finalizar()
     + cancelar()
-    + getValorTotal() = soma dos subtotais dos itens
+    + getValorTotal() 
 }
 
 class ItemPedido {
@@ -39,8 +38,8 @@ class ItemPedido {
 }
 
 enum StatusPedido {
-    ABERTO
-    FINALIZADO
+    PENDENTE
+    CONFIRMADO
     CANCELADO
 }
 
