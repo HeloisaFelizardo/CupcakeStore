@@ -36,12 +36,11 @@ docs/uml/class-diagram.puml
 - [x] Histórias de usuário
 - [x] Critérios de aceitação (BDD)
 - [x] Diagrama de classes
-- [ ] Diagrama de Casos de uso
-- [ ] Diagrama de Fluxo do Cliente
-- [ ] Sprint Backlog
-- [ ] Diagrama de Atividades
+- [x] Diagrama de Casos de uso
+- [x] Diagrama de Fluxo do Cliente
+- [x] Diagrama de Atividades
+- [x] Wireframes (HTML + CSS)
 - [ ] Início da implementação com Java + Spring Boot
-- [ ] Wireframes (HTML + CSS)
 - [ ] Deploy inicial
 
 ---
@@ -54,17 +53,45 @@ docs/uml/class-diagram.puml
 - ✔ Detalhamento de Requisitos
 - ✔ Casos de Uso Expandidos Narrados
 - ✔ Diagrama de Classes
+- ✔ Diagrama de casos de uso
+- ✔ Diagrama de atividades
 - ✔ Wireframes da aplicação
 
 Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.
 
 ---
 
+## Wireframes
+
+Os wireframes abaixo representam a estrutura inicial da interface da aplicação.
+Eles foram criados para validar o fluxo de navegação antes da implementação.
+
+Todas as demais telas e diagramas podem ser encontradas na pasta `/docs`.
+
+### Tela Inicial
+
+![Home](docs/wireframes/telainicial.png)
+
+### Login
+
+![Login](docs/wireframes/telalogin.png)
+
+### Carrinho
+
+![Carrinho](docs/wireframes/telacarrinho.png)
+
+### Painel admin
+
+![Painel Admin](docs/wireframes/telainicialadmin.png)
+
+### Gerenciamento de Cupcakes
+
+![Gerenciamento de Cupcakes](docs/wireframes/telagerenciarcupcakes.png)
+
+---
+
 ## 🔜 Próximas Etapas
 
-- 🔹 Diagrama de Classes
-- 🔹 Diagrama de Casos de Uso (visual)
-- 🔹 Mapa Conceitual do domínio
 - 🔹 Implementação com Spring Boot
 - 🔹 Estruturação da camada de persistência
 - 🔹 Testes automatizados
