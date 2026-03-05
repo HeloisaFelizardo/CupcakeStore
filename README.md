@@ -47,15 +47,15 @@ docs/uml/class-diagram.puml
 
 ## ✅ Etapas Concluídas
 
-✔ Histórias de Usuário
-✔ Testes de Aceitação (estruturados com base em comportamento – BDD)
-✔ Fluxo de Trabalho
-✔ Detalhamento de Requisitos
-✔ Casos de Uso Expandidos Narrados
-✔ Diagrama de Classes
-✔ Diagrama de casos de uso
-✔ Diagrama de atividades
-✔ Wireframes da aplicação
+- ✔ Histórias de Usuário
+- ✔ Testes de Aceitação (estruturados com base em comportamento – BDD)
+- ✔ Fluxo de Trabalho
+- ✔ Detalhamento de Requisitos
+- ✔ Casos de Uso Expandidos Narrados
+- ✔ Diagrama de Classes
+- ✔ Diagrama de casos de uso
+- ✔ Diagrama de atividades
+- ✔ Wireframes da aplicação
 
 Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.
 
