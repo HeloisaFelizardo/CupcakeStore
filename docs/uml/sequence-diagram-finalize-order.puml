@@ -1,0 +1,35 @@
+@startuml Sequence Diagram - Finalizar Pedido
+
+actor Cliente
+
+participant "PedidoController" as Controller
+participant "PedidoService" as Service
+participant "PedidoRepository" as PedidoRepo
+participant "Pedido" as Pedido
+participant "Banco de Dados" as DB
+
+Cliente -> Controller : finalizarPedido()
+
+Controller -> Service : finalizarPedido(usuarioId)
+
+Service -> PedidoRepo : buscarPedidoAberto(usuarioId)
+PedidoRepo -> DB : SELECT pedido
+DB --> PedidoRepo : pedido
+PedidoRepo --> Service : Pedido
+
+Service -> Pedido : getValorTotal()
+Pedido --> Service : valorTotal
+
+Service -> Pedido : finalizar()
+
+Service -> PedidoRepo : salvar(pedido)
+PedidoRepo -> DB : UPDATE pedido
+DB --> PedidoRepo : confirmação
+
+PedidoRepo --> Service : pedido atualizado
+
+Service --> Controller : pedido confirmado
+
+Controller --> Cliente : pedido finalizado
+
+@enduml

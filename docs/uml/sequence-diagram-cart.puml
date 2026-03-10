@@ -1,0 +1,35 @@
+@startuml Sequence Diagram - Adicionar Cupcake ao Carrinho
+
+actor Cliente
+
+participant "PedidoController" as Controller
+participant "PedidoService" as Service
+participant "PedidoRepository" as PedidoRepo
+participant "CupcakeRepository" as CupcakeRepo
+participant "Pedido" as Pedido
+participant "Cupcake" as Cupcake
+
+Cliente -> Controller : adicionarCupcake(cupcakeId, quantidade)
+
+Controller -> Service : adicionarItem(cupcakeId, quantidade)
+
+Service -> CupcakeRepo : buscarCupcake(cupcakeId)
+CupcakeRepo --> Service : Cupcake
+
+Service -> Cupcake : possuiEstoque()
+Cupcake --> Service : true
+
+Service -> PedidoRepo : buscarPedidoAberto(usuario)
+PedidoRepo --> Service : Pedido
+
+Service -> Pedido : adicionarItem(cupcake, quantidade)
+
+Service -> PedidoRepo : salvar(pedido)
+
+PedidoRepo --> Service : pedido atualizado
+
+Service --> Controller : item adicionado
+
+Controller --> Cliente : carrinho atualizado
+
+@enduml

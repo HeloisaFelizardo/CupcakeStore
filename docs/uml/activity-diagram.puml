@@ -2,20 +2,27 @@
 
 start
 
-:Visualizar Cupcakes;
-:Selecionar Cupcake;
-:Solicitar Adição ao Carrinho;
+:Visualizar cupcakes disponíveis;
+:Selecionar cupcake;
+:Solicitar adição ao carrinho;
 
-if (Está logado?) then (Sim)
-    :Adicionar ao Carrinho;
+if (Usuário está logado?) then (Sim)
+
+    :Adicionar cupcake ao carrinho;
+
 else (Não)
-    :Realizar Login;
-    :Adicionar ao Carrinho;
+
+    :Realizar login;
+    :Autenticação validada;
+    :Adicionar cupcake ao carrinho;
+
 endif
 
-:Solicitar Finalização do Pedido;
-:Confirmar Pedido;
-:Salvar Pedido no Banco;
+:Solicitar finalização do pedido;
+:Confirmar pedido;
+
+:Processar pedido;
+:Registrar pedido no sistema;
 
 stop
 

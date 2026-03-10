@@ -39,6 +39,7 @@ docs/uml/class-diagram.puml
 - [x] Diagrama de Casos de uso
 - [x] Diagrama de Fluxo do Cliente
 - [x] Diagrama de Atividades
+- [x] Diagrama de Sequência
 - [x] Wireframes (HTML + CSS)
 - [ ] Início da implementação com Java + Spring Boot
 - [ ] Deploy inicial
@@ -55,6 +56,7 @@ docs/uml/class-diagram.puml
 - ✔ Diagrama de Classes
 - ✔ Diagrama de casos de uso
 - ✔ Diagrama de atividades
+- ✔ Diagrama de sequência
 - ✔ Wireframes da aplicação
 
 Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.
