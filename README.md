@@ -32,14 +32,16 @@ docs/uml/class-diagram.puml
 
 ## 🗺 Roadmap
 
-- [x] Levantamento de requisitos
 - [x] Histórias de usuário
+- [x] Levantamento de requisitos
 - [x] Critérios de aceitação (BDD)
 - [x] Diagrama de classes
 - [x] Diagrama de Casos de uso
 - [x] Diagrama de Fluxo do Cliente
 - [x] Diagrama de Atividades
 - [x] Diagrama de Sequência
+- [x] Mapa Conceitual
+- [x] Mapa Navegacional
 - [x] Wireframes (HTML + CSS)
 - [ ] Início da implementação com Java + Spring Boot
 - [ ] Deploy inicial
@@ -57,6 +59,8 @@ docs/uml/class-diagram.puml
 - ✔ Diagrama de casos de uso
 - ✔ Diagrama de atividades
 - ✔ Diagrama de sequência
+- ✔ Mapa Conceitual
+- ✔ Mapa Navegacional
 - ✔ Wireframes da aplicação
 
 Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.

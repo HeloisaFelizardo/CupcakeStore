@@ -12,8 +12,15 @@ if (Usuário está logado?) then (Sim)
 
 else (Não)
 
-    :Realizar login;
-    :Autenticação validada;
+    if (Usuário possui conta?) then (Sim)
+        :Realizar login;
+        :Autenticação validada;
+    else (Não)
+        :Realizar cadastro;
+        :Conta criada;
+        :Realizar login;
+    endif
+
     :Adicionar cupcake ao carrinho;
 
 endif

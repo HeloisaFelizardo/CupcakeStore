@@ -1,0 +1,67 @@
+@startuml
+title Mapa Navegacional - Loja de Cupcakes
+
+package "Área Pública" {
+
+    [Home]
+    [Catálogo de Cupcakes]
+    [Detalhes do Cupcake]
+    [Login]
+    [Cadastro de Cliente]
+
+    Home --> "Catálogo de Cupcakes"
+    Home --> Login
+    Login --> "Cadastro de Cliente"
+    Login --> "Catálogo de Cupcakes"
+
+    "Catálogo de Cupcakes" --> "Detalhes do Cupcake"
+}
+
+package "Área do Cliente" {
+
+    [Adicionar ao Carrinho]
+    [Carrinho]
+    [Finalizar Pedido]
+    [Confirmação de Pedido]
+
+    "Detalhes do Cupcake" --> "Adicionar ao Carrinho"
+    "Adicionar ao Carrinho" --> Carrinho
+    Carrinho --> "Finalizar Pedido"
+    "Finalizar Pedido" --> "Confirmação de Pedido"
+
+    "Adicionar ao Carrinho" --> Login : se não estiver logado
+}
+
+package "Área Administrativa" {
+
+    [Login Admin]
+    [Painel Administrativo]
+
+    [Dashboard]
+    [Gerenciar Cupcakes]
+    [Adicionar Cupcake]
+    [Editar Cupcake]
+    [Excluir Cupcake]
+
+    [Ver Pedidos]
+    [Logout]
+
+    "Login Admin" --> "Painel Administrativo"
+
+    "Painel Administrativo" --> Dashboard
+    "Painel Administrativo" --> "Gerenciar Cupcakes"
+    "Painel Administrativo" --> "Ver Pedidos"
+    "Painel Administrativo" --> Logout
+
+    "Gerenciar Cupcakes" --> "Adicionar Cupcake"
+    "Gerenciar Cupcakes" --> "Editar Cupcake"
+    "Gerenciar Cupcakes" --> "Excluir Cupcake"
+
+    "Adicionar Cupcake" --> "Gerenciar Cupcakes" : voltar
+    "Editar Cupcake" --> "Gerenciar Cupcakes" : voltar
+
+}
+
+Carrinho --> Carrinho : carrinho vazio
+
+@enduml

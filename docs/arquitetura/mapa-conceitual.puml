@@ -1,0 +1,36 @@
+@startmindmap
+* Sistema de Venda de Cupcakes
+
+** Usuários
+*** Cliente
+**** visualizar cupcakes
+**** adicionar ao carrinho
+**** finalizar pedido
+*** Administrador
+**** cadastrar cupcake
+**** editar cupcake
+**** remover cupcake
+**** atualizar estoque
+**** visualizar pedidos
+
+** Funcionalidades
+*** Catálogo de Cupcakes
+*** Carrinho de Compras
+*** Processamento de Pedidos
+*** Autenticação de Usuário
+
+** Entidades do Sistema
+*** Usuario
+*** Cupcake
+*** Pedido
+*** ItemPedido
+
+** Tecnologias
+*** Java
+*** Spring Boot
+*** JPA
+*** PostgreSQL
+*** Bootstrap
+*** Thymeleaf
+
+@endmindmap
