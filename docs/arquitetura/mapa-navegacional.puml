@@ -1,4 +1,4 @@
-@startuml
+@startuml Mapa Navegacional - Loja de Cupcakes
 title Mapa Navegacional - Loja de Cupcakes
 
 package "Área Pública" {
