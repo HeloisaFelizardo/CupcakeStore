@@ -1,7 +1,10 @@
 package com.heloisa.cupcakestore.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
+import lombok.Data;
 
+@Data
 @Entity
 public class Cupcake {
 
@@ -10,8 +13,8 @@ public class Cupcake {
     private Long id;
 
     private String nome;
-    private String descrição;
-    private double preço;
+    private String descricao;
+    private BigDecimal preco;
     private Integer estoque;
     private String imagemUrl;
 

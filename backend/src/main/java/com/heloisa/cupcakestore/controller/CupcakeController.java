@@ -1,33 +1,33 @@
 package com.heloisa.cupcakestore.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.heloisa.cupcakestore.repository.CupcakeRepository;
+import org.springframework.web.bind.annotation.*;
 import com.heloisa.cupcakestore.model.Cupcake;
+import com.heloisa.cupcakestore.service.CupcakeService;
 import java.util.List;
 
 @RestController
 @RequestMapping("/cupcakes")
 public class CupcakeController {
 
-    private final CupcakeRepository repository;
+    private final CupcakeService service;
 
-    public CupcakeController(CupcakeRepository repository) {
-        this.repository = repository;
+    public CupcakeController(CupcakeService service) {
+        this.service = service;
     }
 
     @PostMapping
     public Cupcake criarCupcake(@RequestBody Cupcake cupcake) {
-        return repository.save(cupcake);
+        return service.salvar(cupcake);
     }
 
     @GetMapping
     public List<Cupcake> listarCupcakes() {
-        return repository.findAll();
+        return service.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Cupcake obterCupcake(@PathVariable Long id) {
+        return service.buscarPorId(id);
     }
 
 }
