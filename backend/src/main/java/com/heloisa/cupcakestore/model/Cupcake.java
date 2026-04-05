@@ -2,16 +2,17 @@ package com.heloisa.cupcakestore.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import lombok.Data;
+import lombok.*;
 
-@Data
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cupcake {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
     private String descricao;
     private BigDecimal preco;
@@ -21,5 +22,4 @@ public class Cupcake {
     public boolean possuiEstoque() {
         return estoque != null && estoque > 0;
     }
-
 }

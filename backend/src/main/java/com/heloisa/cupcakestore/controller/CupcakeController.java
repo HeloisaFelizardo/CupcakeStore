@@ -1,8 +1,10 @@
 package com.heloisa.cupcakestore.controller;
 
+import com.heloisa.cupcakestore.dto.CupcakeDTO;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
-import com.heloisa.cupcakestore.model.Cupcake;
 import com.heloisa.cupcakestore.service.CupcakeService;
+
 import java.util.List;
 
 @RestController
@@ -16,18 +18,27 @@ public class CupcakeController {
     }
 
     @PostMapping
-    public Cupcake criarCupcake(@RequestBody Cupcake cupcake) {
-        return service.salvar(cupcake);
+    public CupcakeDTO criarCupcake(@RequestBody @Valid CupcakeDTO dto) {
+        return service.salvar(dto);
     }
 
     @GetMapping
-    public List<Cupcake> listarCupcakes() {
+    public List<CupcakeDTO> listarCupcakes() {
         return service.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public Cupcake obterCupcake(@PathVariable Long id) {
+    public CupcakeDTO obterCupcake(@PathVariable Long id) {
         return service.buscarPorId(id);
     }
 
+    @DeleteMapping("/{id}")
+    public void deletarCupcake(@PathVariable Long id) {
+        service.deletar(id);
+    }
+
+    @PutMapping("/{id}")
+    public CupcakeDTO atualizarCupcake(@PathVariable Long id, @RequestBody @Valid CupcakeDTO dto) {
+        return service.atualizar(id, dto);
+    }
 }
