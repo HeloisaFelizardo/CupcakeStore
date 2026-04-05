@@ -10,7 +10,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 🎯 Validação (@Valid)
+    // Validação (@Valid)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidation(MethodArgumentNotValidException ex) {
@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
         return erros;
     }
 
-    // 🎯 Erros gerais (ex: cupcake não encontrado)
+    // Erros gerais (ex: cupcake não encontrado)
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> handleRuntime(RuntimeException ex) {
