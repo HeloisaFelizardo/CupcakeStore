@@ -1,0 +1,79 @@
+:root {
+    --rosa: #FFADC0;
+    --lilas: #BB9DCC;
+    --azul: #C3E3F4;
+    --creme: #F9F9F9;
+    --rosa-escuro: #f08aa3;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: url('/images/bg-cupcake.png') center/cover no-repeat;
+
+    filter: blur(2px);
+    z-index: -1;
+}
+body {
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+        url('/images/bg-cupcake.png');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.container {
+    padding-top: 30px;
+}
+.navbar {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+h1 {
+    font-weight: 600;
+    color: #444;
+}
+.menu a {
+    color: #333;
+}
+.menu a:hover {
+    color: var(--rosa-escuro);
+}
+.card {
+    border-radius: 16px;
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.card .fw-bold {
+    font-size: 18px;
+    color: var(--rosa-escuro);
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--lilas), var(--rosa));
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(240,138,163,0.4);
+}

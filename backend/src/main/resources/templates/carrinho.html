@@ -1,0 +1,9 @@
+<h1>Seu Carrinho</h1>
+
+<div th:if="${#lists.isEmpty(carrinho)}">
+    <p>Seu carrinho está vazio 🛒</p>
+</div>
+
+<div th:each="item : ${carrinho}">
+    <p th:text="${item.nome}"></p>
+</div>
