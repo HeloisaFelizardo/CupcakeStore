@@ -1,6 +1,7 @@
 package com.heloisa.cupcakestore.controller;
 
 import com.heloisa.cupcakestore.dto.CupcakeDTO;
+import com.heloisa.cupcakestore.model.Cupcake;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import com.heloisa.cupcakestore.service.CupcakeService;
@@ -28,7 +29,7 @@ public class CupcakeController {
     }
 
     @GetMapping("/{id}")
-    public CupcakeDTO obterCupcake(@PathVariable Long id) {
+    public Cupcake obterCupcake(@PathVariable Long id) {
         return service.buscarPorId(id);
     }
 

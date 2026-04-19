@@ -1,9 +1,92 @@
-<h1>Seu Carrinho</h1>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <title>Cupcake Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="layout :: menu"></div>
+<div class="container mt-5">
 
-<div th:if="${#lists.isEmpty(carrinho)}">
-    <p>Seu carrinho está vazio 🛒</p>
-</div>
+    <h2 class="mb-4">🛒 Seu Carrinho</h2>
 
-<div th:each="item : ${carrinho}">
-    <p th:text="${item.nome}"></p>
+    <!-- CARRINHO VAZIO -->
+    <div th:if="${#lists.isEmpty(pedido.itens)}" class="text-center mt-5">
+        <img src="/images/empty-cart.png" width="180" class="mb-3">
+        <h4>Seu carrinho está vazio</h4>
+        <p class="text-muted">Adicione cupcakes deliciosos 🍰</p>
+        <a href="/" class="btn btn-primary mt-3">Ver produtos</a>
+    </div>
+
+    <!-- LISTA DE ITENS -->
+    <div th:if="${!#lists.isEmpty(pedido.itens)}">
+
+        <div class="card mb-3 shadow-sm"
+             th:each="item : ${pedido.itens}">
+
+            <div class="row g-0 align-items-center">
+
+                <!-- IMAGEM -->
+                <div class="col-md-2 text-center p-2">
+                    <img th:src="${item.cupcake.imagemUrl}"
+                         class="img-fluid rounded"
+                         style="max-height: 100px;">
+                </div>
+
+                <!-- INFO -->
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 th:text="${item.cupcake.nome}"></h5>
+                        <p class="text-muted mb-1"
+                           th:text="${item.cupcake.descricao}"></p>
+
+                        <p>
+                            Qtd: <strong th:text="${item.quantidade}"></strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PREÇO -->
+                <div class="col-md-2 text-center">
+                    <p class="fw-bold"
+                       th:text="'R$ ' + ${item.subtotal}"></p>
+                </div>
+
+                <!-- REMOVER -->
+                <div class="col-md-2 text-center">
+                    <form th:action="@{/pedido/remover}" method="post">
+                        <input type="hidden" name="id"
+                               th:value="${item.cupcake.id}">
+                        <button class="btn btn-outline-danger btn-sm">
+                            Remover
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TOTAL -->
+        <div class="card p-3 shadow-sm mt-4">
+
+            <h4 class="text-end">
+                Total: <span th:text="'R$ ' + ${pedido.valorTotal}"></span>
+            </h4>
+
+            <div class="text-end">
+                <button class="btn btn-success mt-3 px-6" onclick="alert('Pedido finalizado!')">
+                    Finalizar Pedido
+                </button>
+            </div>
+
+        </div>
+
+    </div>
 </div>
+</body>
+</html>

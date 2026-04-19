@@ -77,3 +77,13 @@ h1 {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(240,138,163,0.4);
 }
+
+.btn-success {
+    background: linear-gradient(135deg, #BB9DCC, #FFADC0);
+    border: none;
+    width: 150px;
+}
+
+.btn-success:hover {
+    opacity: 0.9;
+}

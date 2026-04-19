@@ -52,9 +52,8 @@ public class CupcakeService {
                 .toList();
     }
 
-    public CupcakeDTO buscarPorId(Long id) {
+    public Cupcake buscarPorId(Long id) {
         return repository.findById(id)
-                .map(this::toDTO)
                 .orElseThrow(() -> new RuntimeException("Cupcake não encontrado"));
     }
 
