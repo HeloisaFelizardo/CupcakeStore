@@ -80,17 +80,4 @@ public class PedidoController {
     public String sucesso() {
         return "sucesso";
     }
-
-    @ModelAttribute("quantidadeCarrinho")
-    public int quantidadeCarrinho(HttpSession session) {
-        Pedido pedido = (Pedido) session.getAttribute("pedido");
-
-        if (pedido == null || pedido.getItens() == null) {
-            return 0;
-        }
-
-        return pedido.getItens().stream()
-                .mapToInt(item -> item.getQuantidade())
-                .sum();
-    }
 }
