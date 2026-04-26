@@ -41,7 +41,7 @@
 
                         <!-- PREÇO + REMOVER -->
                         <div class="text-end">
-                            <p class="fw-bold mb-2" th:text="'R$ ' + ${item.subtotal}"></p>
+                            <p class="fw-bold mb-2 text-primary" th:text="'R$ ' + ${item.subtotal}"></p>
 
                             <form th:action="@{/pedido/remover}" method="post">
                                 <input type="hidden" name="id" th:value="${item.cupcake.id}" />
