@@ -1,25 +1,24 @@
 :root {
-    --rosa: #FFADC0;
-    --lilas: #BB9DCC;
-    --azul: #C3E3F4;
-    --creme: #F9F9F9;
+    --rosa: #ffadc0;
+    --lilas: #bb9dcc;
+    --azul: #c3e3f4;
+    --creme: #f9f9f9;
     --rosa-escuro: #f08aa3;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
 body::before {
-    content: "";
+    content: '';
     background: url('/images/bg-cupcake.png') center/cover no-repeat;
     filter: blur(2px);
     z-index: -1;
 }
 body {
-    background:
-        linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
-        url('/images/bg-cupcake.png');
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/bg-cupcake.png');
 
     background-size: cover;
     background-position: center;
@@ -32,7 +31,7 @@ body {
 .navbar {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 h1 {
     font-weight: 600;
@@ -57,7 +56,7 @@ h1 {
 }
 .card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 .card .fw-bold {
     font-size: 18px;
@@ -72,11 +71,11 @@ h1 {
 
 .btn-primary:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(240,138,163,0.4);
+    box-shadow: 0 8px 20px rgba(240, 138, 163, 0.4);
 }
 
 .btn-success {
-    background: linear-gradient(135deg, #BB9DCC, #FFADC0);
+    background: linear-gradient(135deg, #bb9dcc, #ffadc0);
     border: none;
     width: 150px;
 }
@@ -90,6 +89,54 @@ h1 {
     height: 100px;
     object-fit: cover;
     border-radius: 12px;
+}
+.cart-page .cart-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.cart-page .card {
+    border-radius: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .cart-page .card-body,
+    .cart-page .p-3 {
+        padding: 16px;
+    }
+
+    .cart-page .cart-item {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cart-page .cart-top {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .cart-page .cart-info {
+        flex: 1;
+    }
+
+    .cart-page .cart-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cart-page .cart-actions button {
+        width: 100%;
+    }
+
+    .cart-page .fw-bold {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 576px) {
