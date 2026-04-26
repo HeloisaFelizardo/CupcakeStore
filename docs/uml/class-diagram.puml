@@ -32,7 +32,7 @@ class Pedido {
 
 class ItemPedido {
     - Long id
-    - Integer quantidade
+    - int quantidade
     - BigDecimal precoUnitario
     + getSubtotal() = quantidade * precoUnitario
 }

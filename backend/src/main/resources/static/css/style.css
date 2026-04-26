@@ -12,11 +12,7 @@ html, body {
 }
 body::before {
     content: "";
-    position: fixed;
-    inset: 0;
-
     background: url('/images/bg-cupcake.png') center/cover no-repeat;
-
     filter: blur(2px);
     z-index: -1;
 }
@@ -29,8 +25,9 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
-.container {
-    padding-top: 30px;
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 .navbar {
     background: rgba(255, 255, 255, 0.6);
@@ -86,4 +83,18 @@ h1 {
 
 .btn-success:hover {
     opacity: 0.9;
+}
+
+.cart-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+@media (max-width: 576px) {
+    .cart-img {
+        width: 80px;
+        height: 80px;
+    }
 }

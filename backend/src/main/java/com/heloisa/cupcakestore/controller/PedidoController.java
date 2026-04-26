@@ -1,6 +1,5 @@
 package com.heloisa.cupcakestore.controller;
 
-import com.heloisa.cupcakestore.dto.CupcakeDTO;
 import com.heloisa.cupcakestore.model.Pedido;
 import com.heloisa.cupcakestore.model.Cupcake;
 import com.heloisa.cupcakestore.service.CupcakeService;
@@ -30,8 +29,8 @@ public class PedidoController {
 
     @PostMapping("/adicionar")
     public String adicionarItem(@RequestParam Long id,
-                                @RequestParam int quantidade,
-                                HttpSession session) {
+            @RequestParam int quantidade,
+            HttpSession session) {
         Pedido pedido = getPedido(session);
         Cupcake cupcake = cupcakeService.buscarPorId(id);
 

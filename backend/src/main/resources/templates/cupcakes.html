@@ -1,110 +1,95 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
 <head>
     <title>Cupcake Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
-<div th:replace="layout :: menu"></div>
-<div class="container mt-4">
+    <div th:replace="layout :: menu"></div>
+    <div class="container-fluid px-2 px-md-4 mt-4">
 
-    <!-- SEM CUPCAKES -->
-    <div th:if="${#lists.isEmpty(cupcakes)}" class="text-center mt-5">
-        <!-- <img src="/images/empty.png" width="180" class="mb-3"> -->
-        <h4>Ops... não temos cupcakes disponíveis 😢</h4>
-        <p class="text-muted">Volte mais tarde ou fale com a gente!</p>
-    </div>
+        <!-- SEM CUPCAKES -->
+        <div th:if="${#lists.isEmpty(cupcakes)}" class="text-center mt-5 py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <h4 class="mb-3">Ops... não temos cupcakes disponíveis 😢</h4>
+                    <p class="text-muted">Volte mais tarde ou fale com a gente!</p>
+                </div>
+            </div>
+        </div>
 
-    <!-- COM CUPCAKES -->
-    <div th:if="${!#lists.isEmpty(cupcakes)}">
+        <!-- COM CUPCAKES -->
+        <div th:if="${!#lists.isEmpty(cupcakes)}">
 
-        <h1 class="mb-4">Lista de Cupcakes</h1>
+            <!-- Título centralizado -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 text-center text-md-start">
+                    <h1 class="display-6 fw-bold">Lista de Cupcakes</h1>
+                </div>
+            </div>
 
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
-                 th:each="cupcake : ${cupcakes}">
+            <!-- Grid de cupcakes otimizado -->
+            <div class="row g-3 g-md-4 justify-content-center">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2" th:each="cupcake : ${cupcakes}">
+                    <div class="card h-100 shadow-sm cupcake-card">
+                        <img th:src="${cupcake.imagemUrl}" class="card-img-top" alt="Cupcake">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title h6 mb-2" th:text="${cupcake.nome}"></h5>
+                            <p class="card-text flex-grow-1 small text-muted mb-2" th:text="${cupcake.descricao}"></p>
+                            <p class="fw-bold text-primary mb-3" th:text="'R$ ' + ${cupcake.preco}"></p>
 
-                <div class="card h-100 shadow-sm">
+                            <!-- FORM -->
+                            <form th:action="@{/pedido/adicionar}" method="post">
+                                <input type="hidden" name="id" th:value="${cupcake.id}">
 
-                    <img th:src="${cupcake.imagemUrl}"
-                         class="card-img-top"
-                         alt="Cupcake">
+                                <!-- QUANTIDADE -->
+                                <div class="input-group mb-2" style="max-width: 120px;">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="diminuir(this)">-
+                                    </button>
+                                    <input type="number" name="quantidade" class="form-control text-center" value="1"
+                                        min="1">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="aumentar(this)">+
+                                    </button>
+                                </div>
 
-                    <div class="card-body d-flex flex-column">
-
-                        <h5 class="card-title" th:text="${cupcake.nome}"></h5>
-
-                        <p class="card-text flex-grow-1"
-                           th:text="${cupcake.descricao}"></p>
-
-                        <p class="fw-bold"
-                           th:text="'R$ ' + ${cupcake.preco}"></p>
-
-                        <!-- FORM -->
-                        <form th:action="@{/pedido/adicionar}" method="post">
-
-                            <input type="hidden" name="id"
-                                   th:value="${cupcake.id}">
-
-                            <!-- QUANTIDADE -->
-                            <div class="input-group mb-2"
-                                 style="max-width: 120px;">
-                                <button class="btn btn-outline-secondary"
-                                        type="button"
-                                        onclick="diminuir(this)">-
-                                </button>
-
-                                <input type="number" name="quantidade"
-                                       class="form-control text-center"
-                                       value="1" min="1">
-
-                                <button class="btn btn-outline-secondary"
-                                        type="button"
-                                        onclick="aumentar(this)">+
-                                </button>
-                            </div>
-
-                            <!-- BOTÃO (voltando estilo antigo) -->
-                            <button type="submit"
-                                    class="btn btn-primary w-100"
+                                <!-- BOTÃO (voltando estilo antigo) -->
+                                <button type="submit" class="btn btn-primary w-100"
                                     th:disabled="${cupcake.estoque == 0}">
-                                Adicionar ao carrinho
-                            </button>
+                                    Adicionar ao carrinho
+                                </button>
+                            </form>
 
-                        </form>
-
-                        <!-- ESTOQUE -->
-                        <p th:if="${cupcake.estoque == 0}"
-                           class="text-danger fw-bold mt-2">
-                            Sem estoque
-                        </p>
-
+                            <!-- ESTOQUE -->
+                            <p th:if="${cupcake.estoque == 0}" class="text-danger fw-bold mt-2">
+                                Sem estoque
+                            </p>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-</div>
-<script>
-    function aumentar(btn) {
-        const input = btn.parentElement.querySelector("input");
-        input.value = parseInt(input.value) + 1;
-    }
-
-    function diminuir(btn) {
-        const input = btn.parentElement.querySelector("input");
-        let valor = parseInt(input.value);
-
-        if (valor > 1) {
-            input.value = valor - 1;
+    <script>
+        function aumentar(btn) {
+            const input = btn.parentElement.querySelector("input");
+            input.value = parseInt(input.value) + 1;
         }
-    }
-</script>
+
+        function diminuir(btn) {
+            const input = btn.parentElement.querySelector("input");
+            let valor = parseInt(input.value);
+
+            if (valor > 1) {
+                input.value = valor - 1;
+            }
+        }
+    </script>
 </body>
+
 </html>

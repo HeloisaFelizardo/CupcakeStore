@@ -11,7 +11,7 @@
 </head>
 <body>
 <div th:replace="layout :: menu"></div>
-<div class="container mt-5">
+<div class="container-fluid px-3 mt-4">
 
     <h2 class="mb-4">🛒 Seu Carrinho</h2>
 
@@ -26,39 +26,31 @@
     <!-- LISTA DE ITENS -->
     <div th:if="${!#lists.isEmpty(pedido.itens)}">
 
-        <div class="card mb-3 shadow-sm"
-             th:each="item : ${pedido.itens}">
+        <div class="card mb-3 shadow-sm" th:each="item : ${pedido.itens}">
 
-            <div class="row g-0 align-items-center">
+            <div class="d-flex flex-column flex-md-row align-items-center p-3 gap-3">
 
                 <!-- IMAGEM -->
-                <div class="col-md-2 text-center p-2">
-                    <img th:src="${item.cupcake.imagemUrl}"
-                         class="img-fluid rounded"
-                         style="max-height: 100px;">
-                </div>
+                <img th:src="${item.cupcake.imagemUrl}"
+                     class="cart-img">
 
                 <!-- INFO -->
-                <div class="col-md-6">
-                    <div class="card-body">
-                        <h5 th:text="${item.cupcake.nome}"></h5>
-                        <p class="text-muted mb-1"
-                           th:text="${item.cupcake.descricao}"></p>
+                <div class="flex-grow-1 text-center text-md-start">
+                    <h6 class="mb-1" th:text="${item.cupcake.nome}"></h6>
+                    <small class="text-muted d-block"
+                           th:text="${item.cupcake.descricao}"></small>
 
-                        <p>
-                            Qtd: <strong th:text="${item.quantidade}"></strong>
-                        </p>
-                    </div>
+                    <span class="d-block mt-1">
+                Qtd: <strong th:text="${item.quantidade}"></strong>
+            </span>
                 </div>
 
-                <!-- PREÇO -->
-                <div class="col-md-2 text-center">
-                    <p class="fw-bold"
+                <!-- PREÇO + REMOVER -->
+                <div class="text-center text-md-end">
+
+                    <p class="fw-bold mb-2"
                        th:text="'R$ ' + ${item.subtotal}"></p>
-                </div>
 
-                <!-- REMOVER -->
-                <div class="col-md-2 text-center">
                     <form th:action="@{/pedido/remover}" method="post">
                         <input type="hidden" name="id"
                                th:value="${item.cupcake.id}">
@@ -66,9 +58,11 @@
                             Remover
                         </button>
                     </form>
+
                 </div>
 
             </div>
+
         </div>
 
         <!-- TOTAL -->

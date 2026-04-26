@@ -17,7 +17,6 @@ public class Pedido {
     private List<ItemPedido> itens = new ArrayList<>();
 
     public void adicionarItem(Cupcake cupcake, int quantidade) {
-
         if (quantidade <= 0) {
             removerItem(cupcake.getId());
             return;
@@ -30,11 +29,9 @@ public class Pedido {
         for (ItemPedido item : itens) {
             if (item.getCupcake().getId().equals(cupcake.getId())) {
                 item.setQuantidade(item.getQuantidade() + quantidade);
-
                 if (item.getQuantidade() <= 0) {
                     removerItem(cupcake.getId());
                 }
-
                 return;
             }
         }
@@ -43,7 +40,6 @@ public class Pedido {
         novoItem.setCupcake(cupcake);
         novoItem.setQuantidade(quantidade);
         novoItem.setPrecoUnitario(cupcake.getPreco());
-
         itens.add(novoItem);
     }
 
@@ -54,9 +50,7 @@ public class Pedido {
     }
 
     public void removerItem(Long cupcakeId) {
-        itens.removeIf(item ->
-                item.getCupcake() != null &&
-                        item.getCupcake().getId().equals(cupcakeId)
-        );
+        itens.removeIf(item -> item.getCupcake() != null &&
+                item.getCupcake().getId().equals(cupcakeId));
     }
 }
