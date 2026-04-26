@@ -43,10 +43,13 @@ h1 {
 .menu a:hover {
     color: var(--rosa-escuro);
 }
+.badge {
+    font-size: 0.7rem;
+}
 .card {
     border-radius: 16px;
     border: none;
-    transition: all 0.3s ease;
+    transition: 0.2s ease;
     overflow: hidden;
 }
 .card-body {
@@ -61,6 +64,9 @@ h1 {
 .card .fw-bold {
     font-size: 18px;
     color: var(--rosa-escuro);
+}
+.btn {
+    border-radius: 10px;
 }
 .btn-primary {
     background: linear-gradient(135deg, var(--lilas), var(--rosa));

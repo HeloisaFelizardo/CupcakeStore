@@ -59,7 +59,9 @@
                     </h4>
 
                     <div class="text-end">
-                        <button class="btn btn-success mt-3 px-6" onclick="alert('Pedido finalizado!')">Finalizar Pedido</button>
+                        <form th:action="@{/pedido/finalizar}" method="post">
+                            <button class="btn btn-success px-4">Finalizar Pedido</button>
+                        </form>
                     </div>
                 </div>
             </div>

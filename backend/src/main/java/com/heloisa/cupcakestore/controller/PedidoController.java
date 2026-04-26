@@ -5,9 +5,13 @@ import com.heloisa.cupcakestore.model.Cupcake;
 import com.heloisa.cupcakestore.service.CupcakeService;
 
 import jakarta.servlet.http.HttpSession;
+
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/pedido")
@@ -30,11 +34,13 @@ public class PedidoController {
     @PostMapping("/adicionar")
     public String adicionarItem(@RequestParam Long id,
             @RequestParam int quantidade,
-            HttpSession session) {
+            HttpSession session,
+            RedirectAttributes redirectAttributes) {
         Pedido pedido = getPedido(session);
         Cupcake cupcake = cupcakeService.buscarPorId(id);
 
         pedido.adicionarItem(cupcake, quantidade);
+        redirectAttributes.addFlashAttribute("sucesso", true);
         return "redirect:/";
     }
 
@@ -50,5 +56,41 @@ public class PedidoController {
         Pedido pedido = getPedido(session);
         model.addAttribute("pedido", pedido);
         return "carrinho";
+    }
+
+    @PostMapping("/finalizar")
+    public String finalizarPedido(HttpSession session) {
+
+        Pedido pedido = getPedido(session);
+
+        if (pedido.getItens().isEmpty()) {
+            return "redirect:/pedido";
+        }
+
+        // simula finalização
+        pedido.setDataPedido(LocalDateTime.now());
+
+        // limpa carrinho
+        session.removeAttribute("pedido");
+
+        return "redirect:/pedido/sucesso";
+    }
+
+    @GetMapping("/sucesso")
+    public String sucesso() {
+        return "sucesso";
+    }
+
+    @ModelAttribute("quantidadeCarrinho")
+    public int quantidadeCarrinho(HttpSession session) {
+        Pedido pedido = (Pedido) session.getAttribute("pedido");
+
+        if (pedido == null || pedido.getItens() == null) {
+            return 0;
+        }
+
+        return pedido.getItens().stream()
+                .mapToInt(item -> item.getQuantidade())
+                .sum();
     }
 }
