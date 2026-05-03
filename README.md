@@ -1,32 +1,143 @@
-# 📌 Cupcake Store
+# 🧁 Cupcake Store
 
-Projeto Integrador Transdisciplinar em Engenharia de Software II - UNICSUL - Cruzeiro do Sul Virtual
-
-## 🧭 Visão Geral
-
-Este projeto consiste no desenvolvimento de um sistema utilizando **Java + Spring Boot**, estruturado a partir de uma base sólida de análise e modelagem antes da implementação.
-
-O objetivo é construir a aplicação seguindo boas práticas de Engenharia de Software, com foco em clareza de requisitos, organização de domínio e preparação para escalabilidade.
+Aplicação web de e-commerce de cupcakes desenvolvida com **Spring Boot**, com foco em regras de negócio, persistência de dados e controle de concorrência.
 
 ---
 
-## 🚀 Status do Projeto
+## 🚀 Funcionalidades
 
-Atualmente o projeto está na fase de:
-
-**Análise e Especificação de Requisitos**, em transição para **Modelagem Estrutural**.
-
-Antes de iniciar a implementação, foi estruturada toda a base de entendimento do sistema.
+- 📋 Listagem de cupcakes
+- 🛒 Carrinho de compras com sessão
+- ➕ Adição e remoção de itens
+- 💳 Finalização de pedidos
+- 💾 Persistência com banco de dados
+- 📉 Controle de estoque
+- ⚠️ Validação de estoque insuficiente
+- 🔒 Controle de concorrência (evita vendas simultâneas inconsistentes)
 
 ---
 
-## Modelagem
+## 🛠️ Tecnologias utilizadas
 
-O projeto segue princípios básicos de Domain-Driven Design (DDD),
-com foco em agregados e comportamento no domínio.
+- **Java 17**
+- **Spring Boot**
+- **Spring Data JPA / Hibernate**
+- **Thymeleaf**
+- **Bootstrap**
+- **H2 Database (dev)**
+- **PostgreSQL (prod)**
+
+---
+
+## 🧠 Arquitetura
+
+O projeto segue uma estrutura em camadas:
+
+- `Controller` → entrada das requisições
+- `Service` → regras de negócio
+- `Repository` → acesso a dados
+- `Model (Entities)` → representação do domínio
+
+---
+
+## 🔒 Regras de negócio implementadas
+
+- Um pedido não pode ser finalizado sem itens
+- Não é possível comprar mais do que o estoque disponível
+- O estoque é atualizado automaticamente após a compra
+- Uso de **transações (`@Transactional`)** para garantir consistência
+- Uso de **lock no banco de dados** para evitar concorrência em compras simultâneas
+
+---
+
+## 💾 Banco de dados
+
+O projeto suporta dois ambientes:
+
+### 🔹 Desenvolvimento (H2)
+
+Banco em memória para testes rápidos.
+
+### 🔹 Produção (PostgreSQL)
+
+Banco relacional real.
+
+---
+
+## ⚙️ Configuração
+
+### 🔐 Variáveis de ambiente (recomendado)
+
+Crie um arquivo `application-prod.properties` ou use variáveis:
+
+```properties
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASS}
+```
+
+---
+
+## ▶️ Como executar o projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/HeloisaFelizardo/CupcakeStore.git
+```
+
+---
+
+### 2. Acessar o projeto
+
+```bash
+cd CupcakeStore/backend
+```
+
+---
+
+### 3. Rodar a aplicação
+
+#### 🔹 Usando Maven Wrapper
+
+```bash
+./mvnw spring-boot:run
+```
+
+#### 🔹 No Windows
+
+```bash
+mvnw.cmd spring-boot:run
+```
+
+---
+
+### 4. Acessar no navegador
+
+```
+http://localhost:8080
+```
+
+---
+
+## 🧪 Testando o fluxo
+
+1. Adicione cupcakes ao carrinho
+2. Acesse o carrinho
+3. Finalize o pedido
+4. Verifique os dados no banco de dados
+
+---
+
+## 📊 Modelagem
+
+O projeto segue princípios básicos de **Domain-Driven Design (DDD)**, com foco em agregados e comportamento no domínio.
 
 Diagrama de classes disponível em:
+
+```
 docs/uml/class-diagram.puml
+```
 
 ---
 
@@ -36,43 +147,37 @@ docs/uml/class-diagram.puml
 - [x] Levantamento de requisitos
 - [x] Critérios de aceitação (BDD)
 - [x] Diagrama de classes
-- [x] Diagrama de Casos de uso
-- [x] Diagrama de Fluxo do Cliente
-- [x] Diagrama de Atividades
-- [x] Diagrama de Sequência
-- [x] Mapa Conceitual
-- [x] Mapa Navegacional
+- [x] Diagrama de casos de uso
+- [x] Diagrama de fluxo do cliente
+- [x] Diagrama de atividades
+- [x] Diagrama de sequência
+- [x] Mapa conceitual
+- [x] Mapa navegacional
 - [x] Wireframes (HTML + CSS)
 - [x] Início da implementação com Java + Spring Boot
 - [ ] Deploy inicial
 
 ---
 
-## ✅ Etapas Concluídas
+## ✅ Etapas concluídas
 
-- ✔ Histórias de Usuário
-- ✔ Testes de Aceitação (estruturados com base em comportamento – BDD)
-- ✔ Fluxo de Trabalho
-- ✔ Detalhamento de Requisitos
-- ✔ Casos de Uso Expandidos Narrados
-- ✔ Diagrama de Classes
-- ✔ Diagrama de casos de uso
-- ✔ Diagrama de atividades
-- ✔ Diagrama de sequência
-- ✔ Mapa Conceitual
-- ✔ Mapa Navegacional
-- ✔ Wireframes da aplicação
+- ✔ Histórias de usuário
+- ✔ Testes de aceitação (BDD)
+- ✔ Fluxo de trabalho
+- ✔ Detalhamento de requisitos
+- ✔ Casos de uso expandidos narrados
+- ✔ Diagramas (classes, sequência, atividades, etc.)
+- ✔ Modelagem completa do sistema
 
-Essa etapa garantiu clareza das regras de negócio e do comportamento esperado do sistema antes da implementação.
+Essa etapa garantiu clareza das regras de negócio antes da implementação.
 
 ---
 
-## Wireframes
+## 🎨 Wireframes
 
-Os wireframes abaixo representam a estrutura inicial da interface da aplicação.
-Eles foram criados para validar o fluxo de navegação antes da implementação.
+Os wireframes representam a estrutura inicial da interface da aplicação.
 
-Todas as demais telas e diagramas podem ser encontradas na pasta `/docs`.
+Todas as demais telas e diagramas estão na pasta `/docs`.
 
 ### Tela Inicial
 
@@ -86,59 +191,52 @@ Todas as demais telas e diagramas podem ser encontradas na pasta `/docs`.
 
 ![Carrinho](docs/wireframes/telacarrinho.png)
 
-### Painel admin
+### Painel Admin
 
 ![Painel Admin](docs/wireframes/telainicialadmin.png)
 
 ### Gerenciamento de Cupcakes
 
-![Gerenciamento de Cupcakes](docs/wireframes/telagerenciarcupcakes.png)
+![Gerenciamento](docs/wireframes/telagerenciarcupcakes.png)
 
 ---
 
-## 🔜 Próximas Etapas
+## 💡 Diferenciais do projeto
 
-- 🔹 Implementação com Spring Boot
-- 🔹 Estruturação da camada de persistência
-- 🔹 Testes automatizados
-
----
-
-## 🛠 Tecnologias Planejadas
-
-- Java
-- Spring Boot
-- Banco de Dados (a definir)
-- HTML + CSS / Thymeleaf
-- JPA / Hibernate
+- Implementação de regras reais de negócio
+- Controle de estoque com consistência de dados
+- Tratamento de concorrência em nível de banco
+- Arquitetura em camadas bem definida
+- Suporte a múltiplos ambientes (H2 e PostgreSQL)
 
 ---
 
-## 📦 Funcionalidades
+## 🚀 Próximos passos
 
-- Listagem de produtos
-- Carrinho de compras
-- Finalização de pedido
-- Controle de estoque
-- Persistência em banco de dados
+- 🔐 Autenticação com Spring Security
+- 📊 Dashboard administrativo
+- 📦 Status de pedidos (PENDENTE, FINALIZADO)
+- 🎨 Melhorias de UI/UX
+- 🌐 Deploy em nuvem
 
 ---
 
 ## 🔒 Destaques técnicos
 
 - Controle de concorrência com lock no banco
-- Separação de ambientes (H2 e PostgreSQL)
-- Arquitetura em camadas (Controller, Service, Repository)
+- Uso de transações para consistência de dados
+- Separação de ambientes (dev/prod)
+- Organização em camadas
 
 ---
 
-## 📚 Abordagem Utilizada
+## 📚 Abordagem utilizada
 
-Os critérios de aceitação foram estruturados utilizando o padrão **BDD (Behavior-Driven Development)**, organizando os comportamentos esperados no formato:
+Os critérios de aceitação foram estruturados utilizando **BDD (Behavior-Driven Development)**:
 
 > Dado – Quando – Então
 
-Essa abordagem aproxima regras de negócio da implementação e facilita a futura criação de testes automatizados.
+Isso aproxima regras de negócio da implementação e facilita testes futuros.
 
 ---
 
@@ -146,47 +244,33 @@ Essa abordagem aproxima regras de negócio da implementação e facilita a futur
 
 Mais do que desenvolver funcionalidades, o foco deste projeto é praticar:
 
-- Estruturação adequada de requisitos
-- Organização do domínio
 - Modelagem antes da implementação
-- Mentalidade orientada a arquitetura
+- Organização de domínio
+- Arquitetura limpa
+- Boas práticas de backend
 
-Planejamento também é engenharia.
-
----
-
-## 📐 Arquitetura Planejada
-
-A aplicação será estruturada seguindo uma organização em camadas, separando responsabilidades para manter o código mais claro, organizado e de fácil manutenção.
-
-Estrutura prevista:
-
-📦 controller  
-Responsável por receber as requisições e retornar as respostas da aplicação.
-
-📦 service  
-Camada onde ficarão as regras de negócio e validações.
-
-📦 repository  
-Responsável pelo acesso e manipulação dos dados no banco.
-
-📦 model (ou domain)  
-Entidades que representam o domínio do sistema.
-
-📦 dto  
-Objetos de transferência de dados entre as camadas.
+**Planejamento também é engenharia.**
 
 ---
 
-### 🔎 Organização por camadas
+## 📐 Arquitetura planejada
 
-A estrutura seguirá o padrão:
+Estrutura em camadas:
 
+```
 Controller → Service → Repository → Banco de Dados
+```
 
-Essa organização facilita:
+Pacotes:
 
-- Separação de responsabilidades
-- Testabilidade
-- Manutenção futura
-- Evolução da aplicação
+- `controller` → entrada das requisições
+- `service` → regras de negócio
+- `repository` → acesso ao banco
+- `model` → entidades do domínio
+- `dto` → transferência de dados
+
+---
+
+## 👩‍💻 Autora
+
+Desenvolvido por **Heloisa Felizardo** 🚀

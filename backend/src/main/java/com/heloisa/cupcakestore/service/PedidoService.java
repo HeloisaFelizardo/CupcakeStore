@@ -15,12 +15,12 @@ import com.heloisa.cupcakestore.model.Pedido;
 @Service
 public class PedidoService {
 
-    private final PedidoRepository repository;
+    private final PedidoRepository pedidoRepository;
     private final CupcakeRepository cupcakeRepository;
 
-    public PedidoService(PedidoRepository repository,
+    public PedidoService(PedidoRepository pedidoRepository,
             CupcakeRepository cupcakeRepository) {
-        this.repository = repository;
+        this.pedidoRepository = pedidoRepository;
         this.cupcakeRepository = cupcakeRepository;
     }
 
@@ -46,6 +46,6 @@ public class PedidoService {
         }
 
         pedido.setDataPedido(LocalDateTime.now());
-        repository.save(pedido);
+        pedidoRepository.save(pedido);
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class CupcakeService {
 
     @Autowired
-    private final CupcakeRepository repository;
+    private final CupcakeRepository cupcakeRepository;
 
     private Cupcake toEntity(CupcakeDTO dto) {
         return new Cupcake(
@@ -21,8 +21,7 @@ public class CupcakeService {
                 dto.getDescricao(),
                 dto.getPreco(),
                 dto.getEstoque(),
-                dto.getImagemUrl()
-        );
+                dto.getImagemUrl());
     }
 
     private CupcakeDTO toDTO(Cupcake cupcake) {
@@ -32,49 +31,48 @@ public class CupcakeService {
                 cupcake.getDescricao(),
                 cupcake.getPreco(),
                 cupcake.getEstoque(),
-                cupcake.getImagemUrl()
-        );
+                cupcake.getImagemUrl());
     }
 
-    public CupcakeService(CupcakeRepository repository) {
-        this.repository = repository;
+    public CupcakeService(CupcakeRepository cupcakeRepository) {
+        this.cupcakeRepository = cupcakeRepository;
     }
 
     public CupcakeDTO salvar(CupcakeDTO dto) {
         Cupcake cupcake = toEntity(dto);
-        Cupcake salvo = repository.save(cupcake);
+        Cupcake salvo = cupcakeRepository.save(cupcake);
         return toDTO(salvo);
     }
 
     public List<CupcakeDTO> listarTodos() {
-        return repository.findAll().stream()
+        return cupcakeRepository.findAll().stream()
                 .map(this::toDTO)
                 .toList();
     }
 
     public Cupcake buscarPorId(Long id) {
-        return repository.findById(id)
+        return cupcakeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cupcake não encontrado"));
     }
 
     public void deletar(Long id) {
-        if (!repository.existsById(id)) {
+        if (!cupcakeRepository.existsById(id)) {
             throw new RuntimeException("Cupcake não encontrado");
         }
-        repository.deleteById(id);
+        cupcakeRepository.deleteById(id);
     }
 
     public CupcakeDTO atualizar(Long id, CupcakeDTO dto) {
-        Cupcake cupcakeExistente = repository.findById(id)
+        Cupcake cupcakeExistente = cupcakeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cupcake não encontrado"));
 
-        //Atualiza os campos do cupcake existente
+        // Atualiza os campos do cupcake existente
         cupcakeExistente.setNome(dto.getNome());
         cupcakeExistente.setDescricao(dto.getDescricao());
         cupcakeExistente.setPreco(dto.getPreco());
         cupcakeExistente.setEstoque(dto.getEstoque());
         cupcakeExistente.setImagemUrl(dto.getImagemUrl());
-        Cupcake atualizado = repository.save(cupcakeExistente);
+        Cupcake atualizado = cupcakeRepository.save(cupcakeExistente);
         return toDTO(atualizado);
     }
 }
