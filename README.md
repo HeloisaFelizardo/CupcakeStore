@@ -114,8 +114,8 @@ mvnw.cmd spring-boot:run
 
 ### 4. Acessar no navegador
 
-```
-http://localhost:8080
+```http://localhost:8080
+
 ```
 
 ---
@@ -135,8 +135,8 @@ O projeto segue princípios básicos de **Domain-Driven Design (DDD)**, com foco
 
 Diagrama de classes disponível em:
 
-```
-docs/uml/class-diagram.puml
+```docs/uml/class-diagram.puml
+
 ```
 
 ---
@@ -257,8 +257,8 @@ Mais do que desenvolver funcionalidades, o foco deste projeto é praticar:
 
 Estrutura em camadas:
 
-```
-Controller → Service → Repository → Banco de Dados
+```Controller → Service → Repository → Banco de Dados
+
 ```
 
 Pacotes:
