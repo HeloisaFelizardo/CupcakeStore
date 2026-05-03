@@ -6,14 +6,25 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import jakarta.persistence.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "pedido")
 public class Pedido {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDateTime dataPedido;
+
+    @Transient
     private Usuario cliente;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemPedido> itens = new ArrayList<>();
 
     public void adicionarItem(Cupcake cupcake, int quantidade) {
@@ -22,12 +33,8 @@ public class Pedido {
             return;
         }
 
-        if (itens == null) {
-            itens = new ArrayList<>();
-        }
-
         for (ItemPedido item : itens) {
-            if (item.getCupcake().getId().equals(cupcake.getId())) {
+            if (Objects.equals(item.getCupcake().getId(), cupcake.getId())) {
                 item.setQuantidade(item.getQuantidade() + quantidade);
                 if (item.getQuantidade() <= 0) {
                     removerItem(cupcake.getId());
@@ -40,6 +47,7 @@ public class Pedido {
         novoItem.setCupcake(cupcake);
         novoItem.setQuantidade(quantidade);
         novoItem.setPrecoUnitario(cupcake.getPreco());
+        novoItem.setPedido(this);
         itens.add(novoItem);
     }
 
@@ -51,6 +59,11 @@ public class Pedido {
 
     public void removerItem(Long cupcakeId) {
         itens.removeIf(item -> item.getCupcake() != null &&
-                item.getCupcake().getId().equals(cupcakeId));
+                Objects.equals(item.getCupcake().getId(), cupcakeId));
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.dataPedido = LocalDateTime.now();
     }
 }

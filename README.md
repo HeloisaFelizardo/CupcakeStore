@@ -43,7 +43,7 @@ docs/uml/class-diagram.puml
 - [x] Mapa Conceitual
 - [x] Mapa Navegacional
 - [x] Wireframes (HTML + CSS)
-- [ ] Início da implementação com Java + Spring Boot
+- [x] Início da implementação com Java + Spring Boot
 - [ ] Deploy inicial
 
 ---
@@ -111,6 +111,24 @@ Todas as demais telas e diagramas podem ser encontradas na pasta `/docs`.
 - Banco de Dados (a definir)
 - HTML + CSS / Thymeleaf
 - JPA / Hibernate
+
+---
+
+## 📦 Funcionalidades
+
+- Listagem de produtos
+- Carrinho de compras
+- Finalização de pedido
+- Controle de estoque
+- Persistência em banco de dados
+
+---
+
+## 🔒 Destaques técnicos
+
+- Controle de concorrência com lock no banco
+- Separação de ambientes (H2 e PostgreSQL)
+- Arquitetura em camadas (Controller, Service, Repository)
 
 ---
 

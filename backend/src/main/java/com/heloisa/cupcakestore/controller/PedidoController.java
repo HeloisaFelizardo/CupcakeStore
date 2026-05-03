@@ -2,7 +2,9 @@ package com.heloisa.cupcakestore.controller;
 
 import com.heloisa.cupcakestore.model.Pedido;
 import com.heloisa.cupcakestore.model.Cupcake;
+import com.heloisa.cupcakestore.model.ItemPedido;
 import com.heloisa.cupcakestore.service.CupcakeService;
+import com.heloisa.cupcakestore.service.PedidoService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -17,9 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/pedido")
 public class PedidoController {
     private final CupcakeService cupcakeService;
+    private final PedidoService pedidoService;
 
-    public PedidoController(CupcakeService cupcakeService) {
+    public PedidoController(CupcakeService cupcakeService, PedidoService pedidoService) {
         this.cupcakeService = cupcakeService;
+        this.pedidoService = pedidoService;
     }
 
     private Pedido getPedido(HttpSession session) {
@@ -59,7 +63,8 @@ public class PedidoController {
     }
 
     @PostMapping("/finalizar")
-    public String finalizarPedido(HttpSession session) {
+    public String finalizarPedido(HttpSession session,
+            RedirectAttributes redirectAttributes) {
 
         Pedido pedido = getPedido(session);
 
@@ -67,13 +72,17 @@ public class PedidoController {
             return "redirect:/pedido";
         }
 
-        // simula finalização
-        pedido.setDataPedido(LocalDateTime.now());
+        try {
+            pedidoService.finalizarPedido(pedido);
+            session.removeAttribute("pedido");
 
-        // limpa carrinho
-        session.removeAttribute("pedido");
+            return "redirect:/pedido/sucesso";
 
-        return "redirect:/pedido/sucesso";
+        } catch (RuntimeException e) {
+
+            redirectAttributes.addFlashAttribute("erro", e.getMessage());
+            return "redirect:/pedido";
+        }
     }
 
     @GetMapping("/sucesso")
