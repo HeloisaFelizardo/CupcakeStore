@@ -2,13 +2,10 @@ package com.heloisa.cupcakestore.controller;
 
 import com.heloisa.cupcakestore.model.Pedido;
 import com.heloisa.cupcakestore.model.Cupcake;
-import com.heloisa.cupcakestore.model.ItemPedido;
 import com.heloisa.cupcakestore.service.CupcakeService;
 import com.heloisa.cupcakestore.service.PedidoService;
 
 import jakarta.servlet.http.HttpSession;
-
-import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
