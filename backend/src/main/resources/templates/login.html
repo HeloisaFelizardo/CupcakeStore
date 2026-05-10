@@ -1,7 +1,35 @@
-<h1>Login</h1>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head>
+        <title>Cupcake Store</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- CSS -->
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
 
-<form>
-    <input type="text" placeholder="Email">
-    <input type="password" placeholder="Senha">
-    <button type="submit">Entrar</button>
-</form>
+    <body>
+        <div th:replace="~{layout :: menu}"></div>
+
+        <div class="container mt-5" style="max-width: 400px">
+            <h2>Login</h2>
+
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <label>Email</label>
+
+                    <input type="text" name="username" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Senha</label>
+
+                    <input type="password" name="password" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+        </div>
+    </body>
+</html>
