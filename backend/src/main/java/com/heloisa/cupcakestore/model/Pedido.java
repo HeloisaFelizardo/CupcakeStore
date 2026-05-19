@@ -21,7 +21,8 @@ public class Pedido {
 
     private LocalDateTime dataPedido;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario cliente;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)

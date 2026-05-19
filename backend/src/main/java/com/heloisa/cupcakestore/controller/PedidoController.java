@@ -4,6 +4,7 @@ import com.heloisa.cupcakestore.model.Pedido;
 import com.heloisa.cupcakestore.model.Cupcake;
 import com.heloisa.cupcakestore.service.CupcakeService;
 import com.heloisa.cupcakestore.service.PedidoService;
+import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -85,5 +86,11 @@ public class PedidoController {
     @GetMapping("/sucesso")
     public String sucesso() {
         return "sucesso";
+    }
+
+    @GetMapping("/meus-pedidos")
+    public String meusPedidos(Model model) {
+        model.addAttribute("pedidos", pedidoService.buscarPedidosDoUsuarioLogado());
+        return "meus-pedidos";
     }
 }

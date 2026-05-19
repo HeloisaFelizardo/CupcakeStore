@@ -2,6 +2,7 @@ package com.heloisa.cupcakestore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +23,7 @@ public class Usuario {
     private String senha;
 
     private String role;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 }
