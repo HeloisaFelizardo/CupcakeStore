@@ -54,8 +54,9 @@ public class Pedido {
 
     public BigDecimal getValorTotal() {
         return itens.stream()
-                .map(ItemPedido::getSubtotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .filter(item -> item != null)
+                .map(item -> item.getSubtotal())
+                .reduce(BigDecimal.ZERO, (total, valor) -> total.add(valor));
     }
 
     public void removerItem(Long cupcakeId) {
