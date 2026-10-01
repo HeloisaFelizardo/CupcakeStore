@@ -1,6 +1,5 @@
 HELP.md
 target/
-.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -68,3 +67,6 @@ node_modules/
 .env
 *.log
 *.db
+
+/backend/src/main/resources/application-prod.yml
+/backend/src/main/resources/application-dev.yml

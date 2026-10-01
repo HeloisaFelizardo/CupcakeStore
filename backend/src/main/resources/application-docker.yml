@@ -1,0 +1,33 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: ${DATABASE_URL}
+        username: ${DATABASE_USER}
+        password: ${DATABASE_PASSWORD}
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+        open-in-view: true
+        properties:
+            hibernate:
+                format_sql: true
+
+    session:
+        store-type: jdbc
+        jdbc:
+            initialize-schema: always
+        timeout: 3600
+
+security:
+    admin:
+        email: ${ADMIN_EMAIL}
+        initial-password: ${ADMIN_INITIAL_PASSWORD}
+
+logging:
+    level:
+        com.heloisa.cupcake-store: DEBUG

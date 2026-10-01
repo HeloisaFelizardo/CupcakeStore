@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: cupcake-store
+
+    session:
+        store-type: jdbc
+        jdbc:
+            initialize-schema: always
+        timeout: 3600
