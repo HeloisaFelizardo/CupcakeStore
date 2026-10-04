@@ -22,11 +22,13 @@ Aplicação web de e-commerce de cupcakes desenvolvida com **Spring Boot**, com 
 - **Java 17**
 - **Spring Boot**
 - **Spring Data JPA / Hibernate**
+- **PostgreSQL**
 - **Thymeleaf**
+- **HTML, CSS e JavaScript**
 - **Bootstrap**
-- **Web Service Render**
-- **H2 Database (dev)**
-- **PostgreSQL Neon (prod)**
+- **Docker**
+- **Neon PostgreSQL**
+- **Render**
 
 ---
 
