@@ -53,11 +53,14 @@
                                     </div>
 
                                     <!-- BOTÃO (voltando estilo antigo) -->
-                                    <button type="submit" class="btn btn-primary w-100" th:disabled="${cupcake.estoque == 0}">Adicionar ao carrinho</button>
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary w-100"
+                                        th:disabled="${cupcake.estoque == 0}"
+                                        th:text="${cupcake.estoque == 0 ? 'Sem estoque' : 'Adicionar ao carrinho'}">
+                                        Adicionar ao carrinho
+                                    </button>
                                 </form>
-
-                                <!-- ESTOQUE -->
-                                <p th:if="${cupcake.estoque == 0}" class="text-danger fw-bold mt-2">Sem estoque</p>
                             </div>
                         </div>
                     </div>
