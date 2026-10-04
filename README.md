@@ -24,8 +24,9 @@ Aplicação web de e-commerce de cupcakes desenvolvida com **Spring Boot**, com 
 - **Spring Data JPA / Hibernate**
 - **Thymeleaf**
 - **Bootstrap**
+- **Web Service Render**
 - **H2 Database (dev)**
-- **PostgreSQL (prod)**
+- **PostgreSQL Neon (prod)**
 
 ---
 
@@ -54,13 +55,13 @@ O projeto segue uma estrutura em camadas:
 
 O projeto suporta dois ambientes:
 
-### 🔹 Desenvolvimento (H2)
+### 🔹 Desenvolvimento (H2/ PostgreSQL)
 
 Banco em memória para testes rápidos.
 
 ### 🔹 Produção (PostgreSQL)
 
-Banco relacional real.
+Banco relacional real Neon.
 
 ---
 
@@ -68,15 +69,7 @@ Banco relacional real.
 
 ### 🔐 Variáveis de ambiente (recomendado)
 
-Crie um arquivo `application-prod.properties` ou use variáveis:
-
-```properties
-spring.datasource.url=${DB_URL}
-spring.datasource.username=${DB_USER}
-spring.datasource.password=${DB_PASS}
-```
-
----
+Crie um arquivo `application.yml` ou use variáveis:
 
 ## ▶️ Como executar o projeto
 
@@ -155,7 +148,7 @@ Diagrama de classes disponível em:
 - [x] Mapa navegacional
 - [x] Wireframes (HTML + CSS)
 - [x] Início da implementação com Java + Spring Boot
-- [ ] Deploy inicial
+- [x] Deploy inicial
 
 ---
 
